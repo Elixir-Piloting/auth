@@ -49,7 +49,21 @@
     <div class="container">
         <h1>Payment Successful!</h1>
         <p>Thank you for your payment. Your transaction was completed successfully.</p>
-        <a href="/" class="button">Go to Homepage</a>
+        <script>
+            // Get the channel ID from the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const channelId = urlParams.get('channel_id');
+            if (channelId) {
+                // Construct the link to return to the channel in Discord
+                const discordChannelLink = `https://discord.com/channels/1295712639493603371/${1311419071706959882}`;
+                // Create a button dynamically that redirects to the channel
+                const button = document.createElement('a');
+                button.href = discordChannelLink;
+                button.classList.add('button');
+                button.innerText = 'Return to Channel';
+                document.querySelector('.container').appendChild(button);
+            }
+        </script>
     </div>
 </body>
 </html>
